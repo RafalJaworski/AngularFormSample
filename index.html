@@ -14,6 +14,85 @@
   </head>
   <body>
 
+    <div class="container main-wrapper" ng-controller="FormController">
+      <div class="row">
+        <div class="alert alert-success">
+          <strong>Sukces!</strong>Twoje dane zostały zapisane
+        </div>
+        <div class="well">
+          <strong>Login: </strong><br>
+          <strong>E-mail: </strong><br>
+          <strong>Specjalizacja: </strong><br>
+          <strong>Technologie: </strong><br>
+          <strong>Typ konta: </strong><br>
+        </div>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <label for="ulogin" class="col-md-2 control-label">Login</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="uLogin">
+            </div>
+            <div class="col-md-4" style="font-size: .7rem; padding:8px 0; color:darkred;">
+              Na podstawi Twojego loginu utworzymy email.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="uEmail" class="col-md-2 control-label">Email</label>
+            <div class="col-md-6">
+              <input type="email" class="form-control" id="uEmail">
+            </div>
+
+            <div class="col-md-8 col-md-offset-2">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox">
+                  Użyj emaila w domenie anyapps.pl
+                  <span>(@anyapps.pl)</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="uSpec" class="col-md-2 control-label">Specjalizacja</label>
+            <div class="col-md-8">
+              <select id="uSpec" class="form-control">
+                <option value="">-- wybierz secjalizacje --</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="uSpec" class="col-md-2 control-label">Ulubione technologie</label>
+            <div class="col-sm-8">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox">
+                  Tech
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="uSpec" class="col-md-2 control-label">Typ konta</label>
+             <div class="col-md-8">
+               <div class="radio">
+                 <label>
+                   <input type="radio">
+                   Typ
+                 </label>
+               </div>
+             </div>
+          </div>
+          <div class="col-md-10 col-md-offset-2">
+            <button class="btn btn-success">Zapisz dane</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+
+
+
     <script type="text/javascript" src="js/jquery.js" ></script>
     <script type="text/javascript" src="js/bootstrap.min.js" ></script>
     <script type="text/javascript" src="js/angular.min.js" ></script>
