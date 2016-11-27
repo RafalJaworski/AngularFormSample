@@ -77,7 +77,12 @@
           <div class="form-group">
             <label for="uSpec" class="col-md-2 control-label">Specjalizacja</label>
             <div class="col-md-8">
-              <select id="uSpec" class="form-control">
+              <select
+                      id="uSpec"
+                      class="form-control"
+                      ng-model="member.specialization"
+                      ng-options="spec.name group by spec.type for spec in specializations"
+              >
                 <option value="">-- wybierz secjalizacje --</option>
               </select>
             </div>
@@ -126,6 +131,17 @@
       $scope.member = {};
       $scope.LoginPrompt = false;
       $scope.useEmail = {};
+
+        $scope.specializations = [
+            { name: 'ASP.NET', type: 'Programowanie' },
+            { name: 'PHP', type: 'Programowanie' },
+            { name: 'HTML/CSS', type: 'Programowanie' },
+            { name: 'Photoshop', type: 'Grafika' },
+            { name: 'Illustrator', type: 'Grafika' },
+            { name: 'Premiere', type: 'Video' },
+            { name: 'Photoshop', type: 'Video' },
+        ];
+
     }]);
 
 
