@@ -53,7 +53,7 @@
             <div class="col-md-8 col-md-offset-2">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox">
+                  <input type="checkbox" ng-model="useEmail" ng-change="member.email = member.login+'@anyapps.pl'">
                   Użyj emaila w domenie anyapps.pl
                   <span ng-show="member.login">({{member.login}}@anyapps.pl)</span>
                 </label>
@@ -111,6 +111,7 @@
     app.controller('FormController',['$scope',function ($scope) {
       $scope.member = {};
       $scope.LoginPrompt = false;
+      $scope.useEmail = {};
     }]);
 
 
