@@ -23,7 +23,7 @@
           <strong>Login: </strong> {{member.login }}<br>
           <strong>E-mail: </strong> {{member.email }}<br>
           <strong>Specjalizacja: </strong>{{member.specialization.name}}<br>
-          <strong>Technologie: </strong><br>
+          <strong>Technologie: </strong><span ng-repeat="tech in member.technologies">{{tech.name}},</span><br>
           <strong>Typ konta: </strong><br>
         </div>
         <form class="form-horizontal novalidate">
@@ -92,7 +92,12 @@
             <div class="col-sm-8">
               <div class="checkbox" ng-repeat="tech in technologies">
                 <label>
-                  <input type="checkbox"  ng-model="technology.selected" value="{{tech.name}}">
+                  <input
+                          type="checkbox"
+                          ng-model="tech.selected"
+                          value="{{tech.name}}"
+                          ng-change="populateTechs()"
+                  >
                   {{tech.name}}
                 </label>
               </div>
@@ -127,7 +132,7 @@
 
 
     var app = angular.module('FormExample',[]);
-    app.controller('FormController',['$scope',function ($scope) {
+    app.controller('FormController',['$scope','filterFilter',function ($scope,filterFilter) {
       $scope.member = {};
       $scope.LoginPrompt = false;
       $scope.useEmail = {};
@@ -152,6 +157,10 @@
             { name: 'MySQL', selected: false },
             { name: 'JAVA', selected: false }
         ];
+        
+        $scope.populateTechs = function () {
+            $scope.member.technologies = filterFilter($scope.technologies, {selected:true})
+        }
 
     }]);
 
