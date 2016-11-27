@@ -22,7 +22,7 @@
         <div class="well">
           <strong>Login: </strong> {{member.login }}<br>
           <strong>E-mail: </strong> {{member.email }}<br>
-          <strong>Specjalizacja: </strong><br>
+          <strong>Specjalizacja: </strong>{{member.specialization.name}}<br>
           <strong>Technologie: </strong><br>
           <strong>Typ konta: </strong><br>
         </div>
@@ -90,10 +90,10 @@
           <div class="form-group">
             <label for="uSpec" class="col-md-2 control-label">Ulubione technologie</label>
             <div class="col-sm-8">
-              <div class="checkbox">
+              <div class="checkbox" ng-repeat="tech in technologies">
                 <label>
-                  <input type="checkbox">
-                  Tech
+                  <input type="checkbox"  ng-model="technology.selected" value="{{tech.name}}">
+                  {{tech.name}}
                 </label>
               </div>
             </div>
@@ -140,6 +140,17 @@
             { name: 'Illustrator', type: 'Grafika' },
             { name: 'Premiere', type: 'Video' },
             { name: 'Photoshop', type: 'Video' },
+        ];
+
+        $scope.technologies = [
+            { name: 'Photoshop', selected: false },
+            { name: 'Illustrator', selected: false },
+            { name: 'PHP', selected: false },
+            { name: 'ASP.NET', selected: false },
+            { name: 'JavaScript', selected: false },
+            { name: 'HTML/CSS', selected: false },
+            { name: 'MySQL', selected: false },
+            { name: 'JAVA', selected: false }
         ];
 
     }]);
