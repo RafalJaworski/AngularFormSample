@@ -20,19 +20,26 @@
           <strong>Sukces!</strong>Twoje dane zostały zapisane
         </div>
         <div class="well">
-          <strong>Login: </strong><br>
-          <strong>E-mail: </strong><br>
+          <strong>Login: </strong> {{member.login }}<br>
+          <strong>E-mail: </strong> {{member.email }}<br>
           <strong>Specjalizacja: </strong><br>
           <strong>Technologie: </strong><br>
           <strong>Typ konta: </strong><br>
         </div>
-        <form class="form-horizontal">
+        <form class="form-horizontal novalidate">
           <div class="form-group">
             <label for="ulogin" class="col-md-2 control-label">Login</label>
             <div class="col-md-6">
-              <input type="text" class="form-control" id="uLogin">
+              <input
+                      type="text"
+                      class="form-control"
+                      id="uLogin"
+                      ng-model="member.login"
+                      ng-focus="LoginPrompt=true"
+                      ng-blur="LoginPrompt=false"
+              >
             </div>
-            <div class="col-md-4" style="font-size: .7rem; padding:8px 0; color:darkred;">
+            <div ng-show="LoginPrompt" class="col-md-4" style="font-size: 1rem; padding:8px 0; color:darkred;">
               Na podstawi Twojego loginu utworzymy email.
             </div>
           </div>
@@ -40,7 +47,7 @@
           <div class="form-group">
             <label for="uEmail" class="col-md-2 control-label">Email</label>
             <div class="col-md-6">
-              <input type="email" class="form-control" id="uEmail">
+              <input type="email" class="form-control" id="uEmail" ng-model="member.email">
             </div>
 
             <div class="col-md-8 col-md-offset-2">
@@ -48,7 +55,7 @@
                 <label>
                   <input type="checkbox">
                   Użyj emaila w domenie anyapps.pl
-                  <span>(@anyapps.pl)</span>
+                  <span ng-show="member.login">({{member.login}}@anyapps.pl)</span>
                 </label>
               </div>
             </div>
@@ -103,6 +110,7 @@
     var app = angular.module('FormExample',[]);
     app.controller('FormController',['$scope',function ($scope) {
       $scope.member = {};
+      $scope.LoginPrompt = false;
     }]);
 
 
