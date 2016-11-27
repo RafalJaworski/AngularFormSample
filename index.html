@@ -24,7 +24,7 @@
           <strong>E-mail: </strong> {{member.email }}<br>
           <strong>Specjalizacja: </strong>{{member.specialization.name}}<br>
           <strong>Technologie: </strong><span ng-repeat="tech in member.technologies">{{tech.name}},</span><br>
-          <strong>Typ konta: </strong><br>
+          <strong>Typ konta: </strong> {{member.account}}<br>
         </div>
         <form class="form-horizontal novalidate">
           <div class="form-group">
@@ -106,10 +106,10 @@
           <div class="form-group">
             <label for="uSpec" class="col-md-2 control-label">Typ konta</label>
              <div class="col-md-8">
-               <div class="radio">
+               <div class="radio" ng-repeat="type in accountTypes">
                  <label>
-                   <input type="radio">
-                   Typ
+                   <input type="radio" ng-model="member.account" ng-value="type">
+                   {{type}}
                  </label>
                </div>
              </div>
@@ -156,6 +156,13 @@
             { name: 'HTML/CSS', selected: false },
             { name: 'MySQL', selected: false },
             { name: 'JAVA', selected: false }
+        ];
+
+        $scope.accountTypes = [
+            'Standard',
+            'Optimum',
+            'Premium',
+            'Premium+'
         ];
         
         $scope.populateTechs = function () {
