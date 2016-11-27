@@ -47,13 +47,27 @@
           <div class="form-group">
             <label for="uEmail" class="col-md-2 control-label">Email</label>
             <div class="col-md-6">
-              <input type="email" class="form-control" id="uEmail" ng-model="member.email">
+              <input
+                      type="email"
+                      class="form-control"
+                      id="uEmail"
+                      ng-model="member.email"
+                      ng-disabled="useEmail"
+                      ng-readonly="useEmail"
+              >
+              <!--if chekbox is checked then useEmail is true -->
             </div>
 
             <div class="col-md-8 col-md-offset-2">
               <div class="checkbox">
                 <label>
-                  <input type="checkbox" ng-model="useEmail" ng-change="member.email = member.login+'@anyapps.pl'">
+                  <input
+                          type="checkbox"
+                          ng-model="useEmail"
+                          ng-change="member.email = member.login+'@anyapps.pl'"
+                          ng-disabled="!member.login"
+                  >
+
                   Użyj emaila w domenie anyapps.pl
                   <span ng-show="member.login">({{member.login}}@anyapps.pl)</span>
                 </label>
